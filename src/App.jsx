@@ -14,7 +14,11 @@ function App() {
       type:'text',
       placeholder:'Username',
       label:'Username',
-      required:true
+      errorMessage:
+                "Username should be 3-15 characters and shouldn't include any special character!",
+      required: true,
+      pattern: "^[A-Za-z0-9]{3,15}$",
+      autoComplete: "off",
   },
   {
       id:2,
@@ -22,7 +26,10 @@ function App() {
       type:'text',
       placeholder:'Email',
       label:'Email',
-      required:true
+      errorMessage: "It should be valid email address!",
+      required: true,
+      pattern:"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]{1}[a-zA-Z]{2,}$",
+      autoComplete: "off",
   },
   {
       id:3,
@@ -30,7 +37,11 @@ function App() {
       type:'password',
       placeholder:'Password',
       label:'Password',
-      required:true
+      errorMessage:
+                "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
+      required: true,
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+      autoComplete: "off",
   },
   {
       id:4,
@@ -38,11 +49,14 @@ function App() {
       type:'password',
       placeholder:'Confirm Password',
       label:'Confirm Password',
-      required:true
+      errorMessage: "Password don't match!",
+      required: true,
+      pattern: values.password,
+      autoComplete: "off",
   },
 ]
   const onChange=(e)=>{
-      console.log(e.target.value)
+      // console.log(e.target.value)
       setValues({...values,[e.target.name]:e.target.value})
   }
   const handleSubmit=(e)=>{
